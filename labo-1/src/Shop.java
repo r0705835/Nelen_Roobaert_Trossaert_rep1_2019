@@ -16,13 +16,13 @@ public class Shop {
 
     public double getPrice(int productidx, int days) {
         double price = 0;
-        if(productTypes.get(productidx).equals("M")){
+        if (productTypes.get(productidx).equals("M")) {
             price = 5;
             int daysLeft = days - 3;
             if (daysLeft > 0) {
                 price += (daysLeft * 2);
             }
-        } else if(productTypes.get(productidx).equals("G")){
+        } else if (productTypes.get(productidx).equals("G")) {
             price = days * 3;
         }
         return price;
@@ -40,7 +40,7 @@ public class Shop {
                 addProduct(shop);
             } else if (choice == 2) {
                 showProduct(shop);
-            } else if (choice == 3){
+            } else if (choice == 3) {
                 showPrice(shop);
             }
         }
@@ -56,35 +56,35 @@ public class Shop {
         shop.productTypes.add(type);
     }
 
-    public static void showProduct(Shop shop){
+    public static void showProduct(Shop shop) {
         String id = JOptionPane.showInputDialog("Enter the id:");
         int idx = -1;
         boolean found = false;
-        for(int i = 0; i < shop.productIds.size() && !found; i++) {
-            if(shop.productIds.get(i).equals(id)) {
+        for (int i = 0; i < shop.productIds.size() && !found; i++) {
+            if (shop.productIds.get(i).equals(id)) {
                 idx = i;
                 found = true;
             }
         }
-        if(found) {
+        if (found) {
             JOptionPane.showMessageDialog(null, shop.productTitles.get(idx));
         }
     }
 
-    public static void showPrice(Shop shop){
+    public static void showPrice(Shop shop) {
         String id = JOptionPane.showInputDialog("Enter the id:");
         int idx = -1;
         boolean found = false;
-        for(int i = 0; i < shop.productIds.size() && !found; i++){
-            if(shop.productIds.get(i).equals(id)){
+        for (int i = 0; i < shop.productIds.size() && !found; i++) {
+            if (shop.productIds.get(i).equals(id)) {
                 idx = i;
                 found = true;
             }
         }
-        if(found){
+        if (found) {
             String daysString = JOptionPane.showInputDialog("Enter the number of days:");
             int days = Integer.parseInt(daysString);
-            JOptionPane.showMessageDialog(null, shop.getPrice(idx,days));
+            JOptionPane.showMessageDialog(null, shop.getPrice(idx, days));
         }
     }
 }
