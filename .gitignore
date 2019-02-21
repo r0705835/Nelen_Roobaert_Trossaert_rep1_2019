@@ -36,9 +36,15 @@ hs_err_pid*
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+labo-1/.idea/**/workspace.xml
+labo-1/.idea/**/tasks.xml
+labo-1/.idea/**/usage.statistics.xml
+labo-1/.idea/**/dictionaries
+labo-1/.idea/**/shelf
 
 # Generated files
 .idea/**/contentModel.xml
+labo-1/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
@@ -48,39 +54,55 @@ hs_err_pid*
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+labo-1/.idea/**/dataSources/
+labo-1/.idea/**/dataSources.ids
+labo-1/.idea/**/dataSources.local.xml
+labo-1/.idea/**/sqlDataSources.xml
+labo-1/.idea/**/dynamic.xml
+labo-1/.idea/**/uiDesigner.xml
+labo-1/.idea/**/dbnavigator.xml
 
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+labo-1/.idea/**/gradle.xml
+labo-1/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
+.idea/modules.xml
+.idea/*.iml
+.idea/modules
+labo-1/.idea/modules.xml
+labo-1/.idea/*.iml
+labo-1/.idea/modules
 
 # CMake
 cmake-build-*/
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
+labo-1/.idea/**/mongoSettings.xml
 
 # File-based project format
 *.iws
 
 # IntelliJ
 out/
+labo-1/out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+labo-1/.idea_modules/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
 .idea/replstate.xml
+labo-1/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -90,19 +112,26 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+labo-1/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+labo-1/.idea/caches/build_file_checksums.ser
 
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
+labo-1/*.iml
+labo-1/modules.xml
+labo-1/.idea/misc.xml
+labo-1/*.ipr
 
 # Sonarlint plugin
 .idea/sonarlint
+labo-1/.idea/sonarlint
 
 # End of https://www.gitignore.io/api/intellij
