@@ -1,6 +1,5 @@
+import javax.swing.*;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 
 public class Shop {
@@ -9,11 +8,10 @@ public class Shop {
     private ArrayList<String> productTypes;
     private ArrayList<String> productIds;
 
-    public Shop()
-    {
-        productTitles = new ArrayList<String>();
-        productTypes = new ArrayList<String>();
-        productIds = new ArrayList<String>();
+    public Shop() {
+        productTitles = new ArrayList<>();
+        productTypes = new ArrayList<>();
+        productIds = new ArrayList<>();
     }
 
     public double getPrice(int productidx, int days) {
@@ -62,16 +60,13 @@ public class Shop {
         String id = JOptionPane.showInputDialog("Enter the id:");
         int idx = -1;
         boolean found = false;
-        for(int i = 0; i < shop.productIds.size() && !found; i++)
-        {
-            if(shop.productIds.get(i).equals(id))
-            {
+        for(int i = 0; i < shop.productIds.size() && !found; i++) {
+            if(shop.productIds.get(i).equals(id)) {
                 idx = i;
                 found = true;
             }
         }
-        if(found)
-        {
+        if(found) {
             JOptionPane.showMessageDialog(null, shop.productTitles.get(idx));
         }
     }

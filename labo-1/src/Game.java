@@ -1,4 +1,16 @@
-package PACKAGE_NAME;
+public class Game extends Product {
 
-public class Game {
+    public Game(String title, String type, String id) {
+        super(title, type, id);
+    }
+
+    @Override
+    public String getPrice() {
+        return "$60";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
