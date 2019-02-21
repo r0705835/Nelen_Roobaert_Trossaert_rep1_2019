@@ -1,12 +1,14 @@
-public class Game extends Product {
+package domain.model;
 
-    public Game(String title, String type, String id) {
+public class Movie extends Product {
+
+    public Movie(String title, String type, String id) {
         super(title, type, id);
     }
 
     @Override
     public String getPrice() {
-        return "$60";
+        return "$20";
     }
 
     @Override

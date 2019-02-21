@@ -1,3 +1,5 @@
+package domain.model;
+
 import javax.swing.*;
 import java.util.ArrayList;
 

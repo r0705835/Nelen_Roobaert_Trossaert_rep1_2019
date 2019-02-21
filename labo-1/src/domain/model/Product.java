@@ -1,3 +1,5 @@
+package domain.model;
+
 public abstract class Product {
     private String title;
     private String type;
