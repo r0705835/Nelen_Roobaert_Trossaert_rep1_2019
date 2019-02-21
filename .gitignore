@@ -125,7 +125,7 @@ labo-1/.idea/caches/build_file_checksums.ser
 modules.xml
 .idea/misc.xml
 *.ipr
-labo-1/*.iml
+# labo-1/*.iml
 labo-1/modules.xml
 labo-1/.idea/misc.xml
 labo-1/*.ipr
