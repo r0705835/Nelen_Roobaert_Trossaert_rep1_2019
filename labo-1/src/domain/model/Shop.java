@@ -27,31 +27,16 @@ public class Shop {
         } else if (productTypes.get(productidx).equals("G")) {
             price = days * 3;
         }
-        return price;
-    }
-
-    public static void main(String[] args) {
-        Shop shop = new Shop();
-
-        String menu = "1. Add product\n2. Show product\n3. Show rental price\n\n0. Quit";
-        int choice = -1;
-        while (choice != 0) {
-            String choiceString = JOptionPane.showInputDialog(menu);
-            choice = Integer.parseInt(choiceString);
-            if (choice == 1) {
-                addProduct(shop);
-            } else if (choice == 2) {
-                showProduct(shop);
-            } else if (choice == 3) {
-                showPrice(shop);
-            }
+        else if (productTypes.get(productidx).equals("C")){
+            price = days * 1.5;
         }
+        return price;
     }
 
     public static void addProduct(Shop shop) {
         String title = JOptionPane.showInputDialog("Enter the title:");
         String id = JOptionPane.showInputDialog("Enter the id:");
-        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
+        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
 
         shop.productTitles.add(title);
         shop.productIds.add(id);

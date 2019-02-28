@@ -1,6 +1,6 @@
 package domain.model;
 
-public abstract class Product {
+public abstract class Product implements Comparable {
     private String title;
     private String type;
     private String id;
@@ -10,8 +10,6 @@ public abstract class Product {
         this.type = type;
         this.id = id;
     }
-
-    public abstract String getPrice();
 
     public String toString() {
         return title + " " + type + " " + id;

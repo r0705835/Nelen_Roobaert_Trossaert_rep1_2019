@@ -1,7 +1,5 @@
 package domain.model;
 
-import domain.model.Product;
-
 public class Game extends Product {
 
     public Game(String title, String type, String id) {
@@ -9,12 +7,12 @@ public class Game extends Product {
     }
 
     @Override
-    public String getPrice() {
-        return "$60";
+    public String toString() {
+        return super.toString();
     }
 
     @Override
-    public String toString() {
-        return super.toString();
+    public int compareTo(Object o) {
+        return 0;
     }
 }
