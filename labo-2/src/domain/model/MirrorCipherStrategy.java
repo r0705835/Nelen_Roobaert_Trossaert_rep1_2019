@@ -3,15 +3,31 @@ package domain.model;
 // Concrete strategy subclass
 public class MirrorCipherStrategy implements CipherStrategy {
 
-    @Override
-    public void decode(CipherContext cipherContext) {
-        String content = cipherContext.getText();
-        String decodedContent = new StringBuilder(content).reverse().toString();
-        cipherContext.setText(decodedContent);
+    private CipherContext context = null;
+
+    public MirrorCipherStrategy(CipherContext context) {
+        setContext(context);
     }
 
     @Override
-    public void encode(CipherContext cipherContext) {
-        decode(cipherContext);
+    public CipherContext getContext() {
+        return context;
+    }
+
+    @Override
+    public void setContext(CipherContext context) {
+        this.context = context;
+    }
+
+    @Override
+    public void decode() {
+        String content = getContext().getText();
+        String decodedContent = new StringBuilder(content).reverse().toString();
+        getContext().setText(decodedContent);
+    }
+
+    @Override
+    public void encode() {
+        decode();
     }
 }

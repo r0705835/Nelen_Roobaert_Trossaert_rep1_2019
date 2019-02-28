@@ -16,9 +16,9 @@ public class CipherUI {
         System.out.println("Do you want to use Caesar encryption (1) or Mirror encryption (2) for your text?");
         int a = sc.nextInt();
         if (a == 1)
-            cipherContext.setCipherStrategy(new CaesarCipherStrategy());
+            cipherContext.setCipherStrategy(new CaesarCipherStrategy(cipherContext));
         else if (a == 2)
-            cipherContext.setCipherStrategy(new MirrorCipherStrategy());
+            cipherContext.setCipherStrategy(new MirrorCipherStrategy(cipherContext));
         else
             System.out.println("This won't work.");
         System.out.println("Do you want to decode (1) or encode (2) your text?");
