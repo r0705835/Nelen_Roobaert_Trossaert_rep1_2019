@@ -15,4 +15,9 @@ public class Movie extends Product {
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }

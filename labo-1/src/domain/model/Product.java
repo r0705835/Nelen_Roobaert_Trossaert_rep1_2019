@@ -1,6 +1,6 @@
 package domain.model;
 
-public abstract class Product {
+public abstract class Product implements Comparable {
     private String title;
     private String type;
     private String id;
