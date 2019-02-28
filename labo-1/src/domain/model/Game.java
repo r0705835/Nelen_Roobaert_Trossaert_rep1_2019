@@ -7,11 +7,6 @@ public class Game extends Product {
     }
 
     @Override
-    public String getPrice() {
-        return "$60";
-    }
-
-    @Override
     public String toString() {
         return super.toString();
     }

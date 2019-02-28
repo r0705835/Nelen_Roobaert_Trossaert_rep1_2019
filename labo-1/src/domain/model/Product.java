@@ -11,8 +11,6 @@ public abstract class Product implements Comparable {
         this.id = id;
     }
 
-    public abstract String getPrice();
-
     public String toString() {
         return title + " " + type + " " + id;
     }

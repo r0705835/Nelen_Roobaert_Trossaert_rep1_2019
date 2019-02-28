@@ -6,11 +6,6 @@ public class CD extends Product {
     }
 
     @Override
-    public String getPrice() {
-        return null;
-    }
-
-    @Override
     public int compareTo(Object o) {
         return 0;
     }

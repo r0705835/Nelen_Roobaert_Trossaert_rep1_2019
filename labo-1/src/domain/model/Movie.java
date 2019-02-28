@@ -7,11 +7,6 @@ public class Movie extends Product {
     }
 
     @Override
-    public String getPrice() {
-        return "$20";
-    }
-
-    @Override
     public String toString() {
         return super.toString();
     }

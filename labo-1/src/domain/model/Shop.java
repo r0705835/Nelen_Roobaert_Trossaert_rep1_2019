@@ -27,14 +27,16 @@ public class Shop {
         } else if (productTypes.get(productidx).equals("G")) {
             price = days * 3;
         }
+        else if (productTypes.get(productidx).equals("C")){
+            price = days * 1.5;
+        }
         return price;
     }
-
 
     public static void addProduct(Shop shop) {
         String title = JOptionPane.showInputDialog("Enter the title:");
         String id = JOptionPane.showInputDialog("Enter the id:");
-        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
+        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
 
         shop.productTitles.add(title);
         shop.productIds.add(id);
