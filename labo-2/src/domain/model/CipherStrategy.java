@@ -10,6 +10,6 @@ public interface CipherStrategy {
     // Algorithm method
     void decode();
 
-    // Algorith method
+    // Algorithm method
     void encode();
 }
