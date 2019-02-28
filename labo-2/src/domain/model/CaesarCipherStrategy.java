@@ -1,40 +1,37 @@
 package domain.model;
 
 // Concrete strategy subclass
-public class CaesarCipher implements Cipher {
+public class CaesarCipherStrategy implements CipherStrategy {
 
     @Override
-    public void decode(Text text) {
-        String content = text.getContent();
+    public void decode(CipherContext cipherContext) {
+        String content = cipherContext.getText();
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < content.length(); i++) {
             char currentChar = content.charAt(i);
-            if (currentChar == ' ')
+            if (!Character.isLetter(currentChar))
                 builder.append(currentChar);
             else {
                 char ch = (char) (((int) currentChar + (29) - 97) % 26 + 97);
                 builder.append(ch);
             }
         }
-        text.setContent(builder.toString());
+        cipherContext.setText(builder.toString());
     }
 
     @Override
-    public void encode(Text text) {
-        String content = text.getContent();
-        String flatContent = content.toLowerCase()
-                .replaceAll("\\d", "")
-                .replaceAll("[-+^!?,.]*", "");
+    public void encode(CipherContext cipherContext) {
+        String content = cipherContext.getText().toLowerCase();
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < flatContent.length(); i++) {
-            char currentChar = flatContent.charAt(i);
-            if (currentChar == ' ')
+        for (int i = 0; i < content.length(); i++) {
+            char currentChar = content.charAt(i);
+            if (!Character.isLetter(currentChar))
                 builder.append(currentChar);
             else {
                 char ch = (char) (((int) currentChar + (-3) - 97) % 26 + 97);
                 builder.append(ch);
             }
-            text.setContent(builder.toString());
+            cipherContext.setText(builder.toString());
         }
     }
 }
