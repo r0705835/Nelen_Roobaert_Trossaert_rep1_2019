@@ -1,60 +1,48 @@
 package domain.model;
 
+import domain.db.ShopDB;
+
 import javax.swing.*;
 import java.util.ArrayList;
 
 
 public class Shop {
 
-    private ArrayList<String> productTitles;
-    private ArrayList<String> productTypes;
-    private ArrayList<String> productIds;
+    private static ShopDB shopDB = new ShopDB();
 
     public Shop() {
-        productTitles = new ArrayList<>();
-        productTypes = new ArrayList<>();
-        productIds = new ArrayList<>();
-    }
-
-    public double getPrice(int productidx, int days) {
-        double price = 0;
-        if (productTypes.get(productidx).equals("M")) {
-            price = 5;
-            int daysLeft = days - 3;
-            if (daysLeft > 0) {
-                price += (daysLeft * 2);
-            }
-        } else if (productTypes.get(productidx).equals("G")) {
-            price = days * 3;
-        }
-        else if (productTypes.get(productidx).equals("C")){
-            price = days * 1.5;
-        }
-        return price;
     }
 
     public static void addProduct(Shop shop) {
         String title = JOptionPane.showInputDialog("Enter the title:");
         String id = JOptionPane.showInputDialog("Enter the id:");
         String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
+        Product p;
 
-        shop.productTitles.add(title);
-        shop.productIds.add(id);
-        shop.productTypes.add(type);
+        if(type.equals("M")){
+            p = new Movie(title, id);
+        }
+        else if(type.equals("G")){
+            p = new Game(title, id);
+        }
+        else {
+            p = new CD(title, id);
+        }
+        shopDB.addProduct(p);
     }
 
     public static void showProduct(Shop shop) {
         String id = JOptionPane.showInputDialog("Enter the id:");
         int idx = -1;
         boolean found = false;
-        for (int i = 0; i < shop.productIds.size() && !found; i++) {
-            if (shop.productIds.get(i).equals(id)) {
+        for (int i = 0; i < shopDB.getProductList().size() && !found; i++) {
+            if (shopDB.getProductList().get(i).equals(id)) {
                 idx = i;
                 found = true;
             }
         }
         if (found) {
-            JOptionPane.showMessageDialog(null, shop.productTitles.get(idx));
+            JOptionPane.showMessageDialog(null, shopDB.getProductList().get(idx));
         }
     }
 
@@ -62,8 +50,8 @@ public class Shop {
         String id = JOptionPane.showInputDialog("Enter the id:");
         int idx = -1;
         boolean found = false;
-        for (int i = 0; i < shop.productIds.size() && !found; i++) {
-            if (shop.productIds.get(i).equals(id)) {
+        for (int i = 0; i < shopDB.getProductList().size() && !found; i++) {
+            if (shopDB.getProductList().get(i).equals(id)) {
                 idx = i;
                 found = true;
             }
@@ -71,7 +59,7 @@ public class Shop {
         if (found) {
             String daysString = JOptionPane.showInputDialog("Enter the number of days:");
             int days = Integer.parseInt(daysString);
-            JOptionPane.showMessageDialog(null, shop.getPrice(idx, days));
+            JOptionPane.showMessageDialog(null, shopDB.getPrice(idx, days));
         }
     }
 }

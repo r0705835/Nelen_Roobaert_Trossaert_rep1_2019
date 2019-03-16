@@ -2,8 +2,10 @@ package domain.model;
 
 public class Game extends Product {
 
-    public Game(String title, String type, String id) {
-        super(title, type, id);
+    public static final double price = 3;
+
+    public Game(String title, String id) {
+        super(title, id);
     }
 
     @Override
@@ -12,7 +14,17 @@ public class Game extends Product {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public double getPrice(int days) {
+        double result = price;
+        int daysLeft = days - 3;
+        if (daysLeft > 0) {
+            result += (daysLeft * 2);
+        }
+        return result;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
     }
 }
