@@ -3,9 +3,25 @@ package domain.model;
 // Concrete strategy subclass
 public class CaesarCipherStrategy implements CipherStrategy {
 
+    private CipherContext context = null;
+
+    public CaesarCipherStrategy(CipherContext context) {
+        setContext(context);
+    }
+
     @Override
-    public void decode(CipherContext cipherContext) {
-        String content = cipherContext.getText();
+    public CipherContext getContext() {
+        return context;
+    }
+
+    @Override
+    public void setContext(CipherContext context) {
+        this.context = context;
+    }
+
+    @Override
+    public void decode() {
+        String content = getContext().getText();
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < content.length(); i++) {
             char currentChar = content.charAt(i);
@@ -16,12 +32,12 @@ public class CaesarCipherStrategy implements CipherStrategy {
                 builder.append(ch);
             }
         }
-        cipherContext.setText(builder.toString());
+        getContext().setText(builder.toString());
     }
 
     @Override
-    public void encode(CipherContext cipherContext) {
-        String content = cipherContext.getText().toLowerCase();
+    public void encode() {
+        String content = getContext().getText().toLowerCase();
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < content.length(); i++) {
             char currentChar = content.charAt(i);
@@ -31,7 +47,7 @@ public class CaesarCipherStrategy implements CipherStrategy {
                 char ch = (char) (((int) currentChar + (-3) - 97) % 26 + 97);
                 builder.append(ch);
             }
-            cipherContext.setText(builder.toString());
+            getContext().setText(builder.toString());
         }
     }
 }

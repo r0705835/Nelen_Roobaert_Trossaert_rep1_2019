@@ -29,12 +29,12 @@ public class CipherContext {
 
     // Concrete method
     public void decode() {
-        getCipherStrategy().decode(this);
+        getCipherStrategy().decode();
     }
 
     // Concrete method
     public void encode() {
-        getCipherStrategy().encode(this);
+        getCipherStrategy().encode();
     }
 
     public void display() {

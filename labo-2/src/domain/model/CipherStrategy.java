@@ -3,9 +3,13 @@ package domain.model;
 // Strategy interface
 public interface CipherStrategy {
 
-    // Algorithm method
-    void decode(CipherContext cipherContext);
+    CipherContext getContext();
 
-    // Algorith method
-    void encode(CipherContext cipherContext);
+    void setContext(CipherContext context);
+
+    // Algorithm method
+    void decode();
+
+    // Algorithm method
+    void encode();
 }
