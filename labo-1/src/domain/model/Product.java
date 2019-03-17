@@ -25,6 +25,10 @@ public abstract class Product implements Comparable {
 
     public abstract double getPrice();
 
+    public  String getTitle() {
+        return this.title;
+    }
+
     public int getId() {
         return this.id;
     }

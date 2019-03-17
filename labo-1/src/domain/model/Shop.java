@@ -4,6 +4,7 @@ import domain.db.ShopDB;
 
 import javax.swing.*;
 import java.util.Collections;
+import java.util.List;
 
 
 public class Shop {
@@ -84,5 +85,9 @@ public class Shop {
         } catch (Exception E) {
             JOptionPane.showMessageDialog(null, "Requested product not found");
         }
+    }
+
+    public List<Product> getProducts(){
+        return shopDB.getProductList();
     }
 }

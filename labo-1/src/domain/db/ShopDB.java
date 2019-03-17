@@ -19,7 +19,7 @@ public class ShopDB {
 
     public void addProduct(Product product) {
         int id = 1;
-        for(Product p: productList){
+        for (Product p : productList) {
             if (p.getId() >= id) id = 1 + p.getId();
         }
         product.setId(id);
