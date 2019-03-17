@@ -54,6 +54,21 @@ public class Shop {
         JOptionPane.showMessageDialog(null, shopDB.getProductList());
     }
 
+    public static void loan(Shop shop) {
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Enter the id:"));
+        try {
+            if (shopDB.getProduct(id).isAvailable()) {
+                shopDB.getProduct(id).loan();
+                JOptionPane.showMessageDialog(null, "Product is now lend.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Cannot loan already lend products!");
+
+            }
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(null, "Requested product not found.");
+        }
+    }
+
     public static void showAvailability(Shop shop) {
         int id = Integer.parseInt(JOptionPane.showInputDialog("Enter the id:"));
         try {

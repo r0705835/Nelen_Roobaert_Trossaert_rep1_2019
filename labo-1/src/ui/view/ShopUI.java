@@ -9,7 +9,7 @@ import static domain.model.Shop.*;
 public class ShopUI {
     public void start() {
         Shop shop = new Shop();
-        String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Show all products\n5. Check availability\n\n0. Quit";
+        String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Show all products\n5. Loan product\n6. Check availability\n\n0. Quit";
         int choice = -1;
         while (choice != 0) {
             String choiceString = JOptionPane.showInputDialog(menu);
@@ -23,6 +23,8 @@ public class ShopUI {
             } else if (choice == 4) {
                 showProducts(shop);
             } else if (choice == 5) {
+                loan(shop);
+            } else if (choice == 6) {
                 showAvailability(shop);
             }
         }
