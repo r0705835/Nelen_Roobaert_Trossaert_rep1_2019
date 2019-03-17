@@ -13,8 +13,17 @@ public class ShopDB {
 
     }
 
-    public double getPrice(int productid, int days) {
-        Product p = productList.get(productid);
+    public Product get(String productId){
+        for(Product product: productList){
+            if (product.getId().equals(productId)){
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public double getPrice(String productid, int days) {
+        Product p = get(productid);
         return p.getPrice(days);
     }
 

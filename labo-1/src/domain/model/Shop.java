@@ -33,33 +33,22 @@ public class Shop {
 
     public static void showProduct(Shop shop) {
         String id = JOptionPane.showInputDialog("Enter the id:");
-        int idx = -1;
-        boolean found = false;
-        for (int i = 0; i < shopDB.getProductList().size() && !found; i++) {
-            if (shopDB.getProductList().get(i).equals(id)) {
-                idx = i;
-                found = true;
-            }
+        try {
+            JOptionPane.showMessageDialog(null, shopDB.getProduct(id));
         }
-        if (found) {
-            JOptionPane.showMessageDialog(null, shopDB.getProductList().get(idx));
+        catch (IllegalArgumentException E){
+            JOptionPane.showMessageDialog(null, "Requested product not found");
         }
     }
 
     public static void showPrice(Shop shop) {
         String id = JOptionPane.showInputDialog("Enter the id:");
-        int idx = -1;
-        boolean found = false;
-        for (int i = 0; i < shopDB.getProductList().size() && !found; i++) {
-            if (shopDB.getProductList().get(i).equals(id)) {
-                idx = i;
-                found = true;
-            }
-        }
-        if (found) {
-            String daysString = JOptionPane.showInputDialog("Enter the number of days:");
-            int days = Integer.parseInt(daysString);
-            JOptionPane.showMessageDialog(null, shopDB.getPrice(idx, days));
-        }
+        String daysString = JOptionPane.showInputDialog("Enter the number of days:");
+        int days = Integer.parseInt(daysString);
+        JOptionPane.showMessageDialog(null, shopDB.getPrice(id, days));
+    }
+
+    public static void showProducts(Shop shop){
+        JOptionPane.showMessageDialog(null, shopDB.getProductList());
     }
 }

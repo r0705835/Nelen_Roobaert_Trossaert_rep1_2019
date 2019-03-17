@@ -16,7 +16,7 @@ public abstract class Product implements Comparable {
     public abstract double getPrice(int days);
     public abstract double getPrice();
     public String getId(){
-        return this.title;
+        return this.id;
     }
     @Override
     public int compareTo(Object o) {
@@ -28,5 +28,14 @@ public abstract class Product implements Comparable {
             }
         }
         return -1;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Product){
+            Product p = (Product) obj;
+            return p.getId().equals(this.id);
+        }
+        return false;
     }
 }
