@@ -4,7 +4,7 @@ public class CD extends Product {
 
     public static final double price = 5;
 
-    public CD(String title, String id) {
+    public CD(String title, int id) {
         super(title, id);
     }
 
@@ -20,13 +20,10 @@ public class CD extends Product {
     }
 
     @Override
-    public int compareTo(Object o)  {
-        if (o instanceof Product){
-            Product p = (Product) o;
-            double difference = this.getPrice() - p.getPrice();
-            if (difference == 0){
-                difference = this.getId().compareTo(p.getId());
-            }
+    public int compareTo(Object o) {
+        if (o instanceof CD) {
+            CD cd = (CD) o;
+            return super.compareTo(cd);
         }
         return -1;
     }
