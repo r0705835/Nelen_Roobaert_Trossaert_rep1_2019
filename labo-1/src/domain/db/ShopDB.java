@@ -12,10 +12,6 @@ import java.util.List;
 public class ShopDB {
     private List<Product> productList = new ArrayList<>();
 
-    public ShopDB() {
-
-    }
-
     public double getPrice(int productid, int days) {
         Product p = getProduct(productid);
         return p.getPrice(days);
