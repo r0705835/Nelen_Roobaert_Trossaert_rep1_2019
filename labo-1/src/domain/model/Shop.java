@@ -2,7 +2,6 @@ package domain.model;
 
 import domain.db.ShopDB;
 
-import javax.swing.*;
 import java.util.List;
 
 

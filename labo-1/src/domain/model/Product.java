@@ -19,7 +19,6 @@ public abstract class Product implements Comparable<Product> {
         this(title, 0, true);
     }
 
-
     public String toString() {
         return title + " " + id;
     }
@@ -52,7 +51,6 @@ public abstract class Product implements Comparable<Product> {
         available = true;
     }
 
-
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Product) {
@@ -65,9 +63,9 @@ public abstract class Product implements Comparable<Product> {
     @Override
     public int compareTo(Product o) {
         if (o == null) return 1;
-        if (this.title.compareTo(o.title) == 0) {
-            return this.id - o.id;
+        if (this.id - o.id == 0) {
+            return this.title.compareTo(o.title);
         }
-        return this.title.compareTo(o.title);
+        return this.id - o.id;
     }
 }
