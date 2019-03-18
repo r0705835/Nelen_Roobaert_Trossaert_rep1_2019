@@ -1,21 +1,24 @@
 package domain.model;
 
-public abstract class Product implements Comparable {
+public abstract class Product implements Comparable<Product> {
     private String title;
     private int id;
     private boolean available;
 
-    public Product(String title, int id, double available) {
+    public Product(String title, int id, boolean available) {
         this.title = title;
         this.id = id;
         this.available = true;
     }
 
     public Product(String title, int id) {
-        this.title = title;
-        this.id = id;
-        this.available = true;
+        this(title, id, true);
     }
+
+    public Product(String title) {
+        this(title, 0, true);
+    }
+
 
     public String toString() {
         return title + " " + id;
@@ -25,7 +28,7 @@ public abstract class Product implements Comparable {
 
     public abstract double getPrice();
 
-    public  String getTitle() {
+    public String getTitle() {
         return this.title;
     }
 
@@ -49,14 +52,6 @@ public abstract class Product implements Comparable {
         available = true;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        if (o instanceof Product) {
-            Product p = (Product) o;
-            return this.getId() - p.getId();
-        }
-        return -1;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -65,5 +60,14 @@ public abstract class Product implements Comparable {
             return p.getId() == this.id;
         }
         return false;
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        if (o == null) return 1;
+        if (this.title.compareTo(o.title) == 0) {
+            return this.id - o.id;
+        }
+        return this.title.compareTo(o.title);
     }
 }

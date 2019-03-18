@@ -1,8 +1,12 @@
 package domain.db;
 
+import domain.model.CD;
+import domain.model.Game;
+import domain.model.Movie;
 import domain.model.Product;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ShopDB {
@@ -35,5 +39,29 @@ public class ShopDB {
 
     public List<Product> getProductList() {
         return this.productList;
+    }
+
+    public List<List<Product>> getSortedList() {
+        List<List<Product>> returnList = new ArrayList<>();
+        List<Product> movieList = new ArrayList<>();
+        List<Product> CDList = new ArrayList<>();
+        List<Product> gameList = new ArrayList<>();
+        for (Product product : productList) {
+            if (product instanceof Movie) {
+                movieList.add(product);
+            } else if (product instanceof Game) {
+                gameList.add(product);
+            } else if (product instanceof CD) {
+                CDList.add(product);
+            }
+        }
+        Collections.sort(movieList);
+        Collections.sort(CDList);
+        Collections.sort(gameList);
+        returnList.add(movieList);
+        returnList.add(CDList);
+        returnList.add(gameList);
+
+        return returnList;
     }
 }

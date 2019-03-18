@@ -8,6 +8,10 @@ public class Movie extends Product {
         super(title, id);
     }
 
+    public Movie(String title){
+        super(title);
+    }
+
     @Override
     public String toString() {
         return super.toString();
@@ -23,12 +27,4 @@ public class Movie extends Product {
         return price;
     }
 
-    public int compareTo(Object o) {
-        int i = 0;
-        if (o instanceof Movie) {
-            Movie movie = (Movie) o;
-            i = 3;
-        }
-        return i + super.compareTo(o);
-    }
 }

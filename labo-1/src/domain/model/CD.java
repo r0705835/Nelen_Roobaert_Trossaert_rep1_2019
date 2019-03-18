@@ -8,6 +8,10 @@ public class CD extends Product {
         super(title, id);
     }
 
+    public CD(String title){
+        super(title);
+    }
+
     @Override
     public double getPrice(int dagen) {
         return price * dagen;
@@ -17,14 +21,5 @@ public class CD extends Product {
     public double getPrice() {
         return price;
 
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        if (o instanceof CD) {
-            CD cd = (CD) o;
-            return super.compareTo(cd);
-        }
-        return -1;
     }
 }

@@ -37,13 +37,13 @@ public class ShopUI {
     private void read() {
         try (Scanner scanner = new Scanner(new File("c:/temp/shop.txt"))) {
             while (scanner.hasNextLine()) {
-                String type = scanner.next();
+                String category = scanner.next();
                 int id = Integer.parseInt(scanner.next());
                 String title = scanner.next();
                 Product p;
-                if (type.toUpperCase().equals("M")) {
+                if (category.toUpperCase().equals("M")) {
                     p = new Movie(title, id);
-                } else if (type.toUpperCase().equals("G")) {
+                } else if (category.toUpperCase().equals("G")) {
                     p = new Game(title, id);
                 } else {
                     p = new CD(title, id);

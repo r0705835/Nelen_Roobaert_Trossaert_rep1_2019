@@ -8,6 +8,10 @@ public class Game extends Product {
         super(title, id);
     }
 
+    public Game(String title) {
+        super(title);
+    }
+
     @Override
     public String toString() {
         return super.toString();
@@ -26,15 +30,5 @@ public class Game extends Product {
     @Override
     public double getPrice() {
         return price;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        int i = 0;
-        if (o instanceof Game) {
-            Game game = (Game) o;
-            return super.compareTo(game);
-        }
-        return -1;
     }
 }

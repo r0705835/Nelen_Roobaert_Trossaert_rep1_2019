@@ -17,17 +17,21 @@ public class Shop {
     public static void addProduct(Shop shop) {
         String title = JOptionPane.showInputDialog("Enter the title:");
         int id = Integer.parseInt(JOptionPane.showInputDialog("Enter the id:"));
-        String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):");
+        char type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):").toUpperCase().charAt(0);
         Product p;
 
-        if (type.equals("M")) {
-            p = new Movie(title, id);
-        } else if (type.equals("G")) {
-            p = new Game(title, id);
+        if (type == 'M') {
+            p = new Movie(title);
+            shopDB.addProduct(p);
+        } else if (type == 'G') {
+            p = new Game(title);
+            shopDB.addProduct(p);
+        } else if (type == 'C') {
+            p = new CD(title);
+            shopDB.addProduct(p);
         } else {
-            p = new CD(title, id);
+            JOptionPane.showMessageDialog(null, "The given type does not exist!");
         }
-        shopDB.addProduct(p);
     }
 
     public static void showProduct(Shop shop) {
@@ -51,8 +55,7 @@ public class Shop {
     }
 
     public static void showProducts(Shop shop) {
-        Collections.sort(shopDB.getProductList());
-        JOptionPane.showMessageDialog(null, shopDB.getProductList());
+        JOptionPane.showMessageDialog(null, shopDB.getSortedList());
     }
 
     public static void loan(Shop shop) {
