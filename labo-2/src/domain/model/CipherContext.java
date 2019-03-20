@@ -27,6 +27,7 @@ public class CipherContext {
         this.cipherStrategy = cipherStrategy;
     }
 
+    // TODO why don't we pass the text to the strategy, instead of creating a strategy with coupling to the context?
     // Concrete method
     public void decode() {
         getCipherStrategy().decode();
@@ -35,9 +36,5 @@ public class CipherContext {
     // Concrete method
     public void encode() {
         getCipherStrategy().encode();
-    }
-
-    public void display() {
-        System.out.println(getText());
     }
 }

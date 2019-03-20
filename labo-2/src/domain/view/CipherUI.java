@@ -1,35 +1,61 @@
 package domain.view;
 
-import domain.model.CaesarCipherStrategy;
-import domain.model.CipherContext;
-import domain.model.MirrorCipherStrategy;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
 
-import java.util.Scanner;
+class CipherUI {
 
-public class CipherUI {
-
-    public void start() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your text: ");
-        String string = sc.nextLine();
-        CipherContext cipherContext = new CipherContext(string);
-        System.out.println("Do you want to use Caesar encryption (1) or Mirror encryption (2) for your text?");
-        int a = sc.nextInt();
-        if (a == 1)
-            cipherContext.setCipherStrategy(new CaesarCipherStrategy(cipherContext));
-        else if (a == 2)
-            cipherContext.setCipherStrategy(new MirrorCipherStrategy(cipherContext));
-        else
-            System.out.println("This won't work.");
-        System.out.println("Do you want to decode (1) or encode (2) your text?");
-        int b = sc.nextInt();
-        if (b == 1)
-            cipherContext.decode();
-        else if (b == 2)
-            cipherContext.encode();
-        else
-            System.out.println("This won't work yet again.");
-        System.out.println("The result of your choices:");
-        cipherContext.display();
+    void start(Stage primaryStage) {
+        primaryStage.setTitle("Decodeer/encodeer");
+        GridPane root = new GridPane();
+        root.setAlignment(Pos.BASELINE_CENTER);
+        root.setPadding(new Insets(10));
+        root.setVgap(5);
+        root.setHgap(5);
+        final Label sentenceLabel = new Label("Typ zin:");
+        root.add(sentenceLabel, 0, 0, 1, 1);
+        GridPane.setVgrow(sentenceLabel, Priority.ALWAYS);
+        final TextField sentenceTextField = new TextField();
+        root.add(sentenceTextField, 1, 0, 1, 1);
+        GridPane.setVgrow(sentenceTextField, Priority.ALWAYS);
+        final Label algorithmLabel = new Label("Kies algoritme:");
+        root.add(algorithmLabel, 0, 1, 1, 1);
+        GridPane.setVgrow(algorithmLabel, Priority.ALWAYS);
+        ObservableList<String> algorithmOptions =
+                FXCollections.observableArrayList(
+                        "Caesarcijfer",
+                        "Spiegeling"
+                );
+        final ComboBox<String> algorithmBox = new ComboBox<>(algorithmOptions);
+        root.add(algorithmBox, 1, 1, 1, 1);
+        GridPane.setVgrow(algorithmBox, Priority.ALWAYS);
+        GridPane.setHalignment(algorithmBox, HPos.RIGHT);
+        final Label resultLabel = new Label();
+        final Button encodeButton = new Button("Codeer");
+        encodeButton.setOnAction(new EncodeHandler(sentenceTextField.getText(), algorithmBox.getValue(), resultLabel));
+        root.add(encodeButton, 0, 2, 1, 1);
+        GridPane.setVgrow(encodeButton, Priority.ALWAYS);
+        final Button decodeButton = new Button("Decodeer");
+        decodeButton.setOnAction(new DecodeHandler(sentenceTextField.getText(), algorithmBox.getValue(), resultLabel));
+        root.add(decodeButton, 1, 2, 1, 1);
+        GridPane.setVgrow(decodeButton, Priority.ALWAYS);
+        GridPane.setHalignment(decodeButton, HPos.RIGHT);
+        root.add(resultLabel, 0, 3, 1, 1);
+        GridPane.setVgrow(resultLabel, Priority.ALWAYS);
+        Scene mainScene = new Scene(root, 500, 500);
+        primaryStage.setScene(mainScene);
+        //root.setGridLinesVisible(true);
+        primaryStage.show();
     }
 }
