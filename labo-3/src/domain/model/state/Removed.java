@@ -22,12 +22,7 @@ public class Removed implements ItemState {
     }
 
     @Override
-    public void giveBackNormal() {
-        throw new IllegalStateException("You can't do anything with a removed party item");
-    }
-
-    @Override
-    public void giveBackDamaged() {
+    public void giveBack(boolean damaged) {
         throw new IllegalStateException("You can't do anything with a removed party item");
     }
 

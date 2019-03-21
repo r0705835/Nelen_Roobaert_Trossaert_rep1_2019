@@ -22,12 +22,7 @@ public class Available implements ItemState {
     }
 
     @Override
-    public void giveBackNormal() {
-        throw new IllegalStateException("You can't give back a party item that's not being rented");
-    }
-
-    @Override
-    public void giveBackDamaged() {
+    public void giveBack(boolean damaged) {
         throw new IllegalStateException("You can't give back a party item that's not being rented");
     }
 

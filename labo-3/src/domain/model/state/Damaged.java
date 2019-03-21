@@ -22,12 +22,7 @@ public class Damaged implements ItemState {
     }
 
     @Override
-    public void giveBackNormal() {
-        throw new IllegalStateException("You can't return a party item that's already marked as damaged");
-    }
-
-    @Override
-    public void giveBackDamaged() {
+    public void giveBack(boolean damaged) {
         throw new IllegalStateException("You can't return a party item that's already marked as damaged");
     }
 
