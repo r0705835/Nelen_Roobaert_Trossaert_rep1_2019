@@ -11,7 +11,7 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        CipherUI cipherUI = new CipherUI();
-        cipherUI.start(primaryStage);
+        PartyUI partyUI = new PartyUI();
+        partyUI.start(primaryStage);
     }
 }
