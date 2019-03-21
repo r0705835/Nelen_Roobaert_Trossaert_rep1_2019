@@ -43,11 +43,11 @@ class CipherUI {
         GridPane.setHalignment(algorithmBox, HPos.RIGHT);
         final Label resultLabel = new Label();
         final Button encodeButton = new Button("Codeer");
-        encodeButton.setOnAction(new EncodeHandler(sentenceTextField.getText(), algorithmBox.getValue(), resultLabel));
+        encodeButton.setOnAction(new EncodeHandler(sentenceTextField, algorithmBox, resultLabel));
         root.add(encodeButton, 0, 2, 1, 1);
         GridPane.setVgrow(encodeButton, Priority.ALWAYS);
         final Button decodeButton = new Button("Decodeer");
-        decodeButton.setOnAction(new DecodeHandler(sentenceTextField.getText(), algorithmBox.getValue(), resultLabel));
+        decodeButton.setOnAction(new DecodeHandler(sentenceTextField, algorithmBox, resultLabel));
         root.add(decodeButton, 1, 2, 1, 1);
         GridPane.setVgrow(decodeButton, Priority.ALWAYS);
         GridPane.setHalignment(decodeButton, HPos.RIGHT);

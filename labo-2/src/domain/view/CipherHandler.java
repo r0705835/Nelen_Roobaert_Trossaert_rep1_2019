@@ -3,29 +3,33 @@ package domain.view;
 import domain.model.CaesarCipherStrategy;
 import domain.model.CipherContext;
 import domain.model.MirrorCipherStrategy;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+import javax.xml.soap.Text;
 
 abstract class CipherHandler {
 
-    private String sentence;
-    private String algorithm;
+    private TextField sentenceTextField;
+    private ComboBox<String> algorithmBox;
     private CipherContext cipherContext;
     private Label resultLabel;
 
-    private String getSentence() {
-        return this.sentence;
+    private TextField getSentenceTextField() {
+        return this.sentenceTextField;
     }
 
-    void setSentence(String sentence) {
-        this.sentence = sentence;
+    void setSentenceTextField(TextField sentenceTextField) {
+        this.sentenceTextField = sentenceTextField;
     }
 
-    private String getAlgorithm() {
-        return this.algorithm;
+    private ComboBox<String> getAlgorithmBox() {
+        return this.algorithmBox;
     }
 
-    void setAlgorithm(String algorithm) {
-        this.algorithm = algorithm;
+    void setAlgorithmBox(ComboBox<String> algorithmBox) {
+        this.algorithmBox = algorithmBox;
     }
 
     CipherContext getCipherContext() {
@@ -33,7 +37,7 @@ abstract class CipherHandler {
     }
 
     void setCipherContext() {
-        this.cipherContext = new CipherContext(getSentence());
+        this.cipherContext = new CipherContext(getSentenceTextField().getText());
     }
 
     Label getResultLabel() {
@@ -45,11 +49,12 @@ abstract class CipherHandler {
     }
 
     void setStrategy(){
-        if (getAlgorithm().equals("Caesarcijfer"))
+        setCipherContext();
+        if (getAlgorithmBox().getValue().equals("Caesarcijfer"))
             getCipherContext().setCipherStrategy(new CaesarCipherStrategy(getCipherContext()));
-        else if(getAlgorithm().equals("Spiegeling"))
+        else if(getAlgorithmBox().getValue().equals("Spiegeling"))
             getCipherContext().setCipherStrategy(new MirrorCipherStrategy(getCipherContext()));
         else
-            throw new IllegalStateException("Algoritme " + getAlgorithm() + " niet gevonden in het systeem");
+            throw new IllegalStateException("Algoritme " + getAlgorithmBox().getValue() + " niet gevonden in het systeem");
     }
 }

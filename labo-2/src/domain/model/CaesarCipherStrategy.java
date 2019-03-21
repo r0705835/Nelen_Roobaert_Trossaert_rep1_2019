@@ -25,9 +25,9 @@ public class CaesarCipherStrategy implements CipherStrategy {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < content.length(); i++) {
             char currentChar = content.charAt(i);
-            if (!Character.isLetter(currentChar))
+            if (!Character.isLetter(currentChar) && Character.isSpaceChar(currentChar))
                 builder.append(currentChar);
-            else {
+            else if (Character.isLetter(currentChar)){
                 char ch = (char) (((int) currentChar + (29) - 97) % 26 + 97);
                 builder.append(ch);
             }
@@ -41,9 +41,9 @@ public class CaesarCipherStrategy implements CipherStrategy {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < content.length(); i++) {
             char currentChar = content.charAt(i);
-            if (!Character.isLetter(currentChar))
+            if (!Character.isLetter(currentChar) && Character.isSpaceChar(currentChar))
                 builder.append(currentChar);
-            else {
+            else if (Character.isLetter(currentChar)){
                 char ch = (char) (((int) currentChar + (-3) - 97) % 26 + 97);
                 builder.append(ch);
             }
