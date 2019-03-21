@@ -10,9 +10,7 @@ import javafx.scene.control.TextField;
 public class DecodeHandler extends CipherHandler implements EventHandler<ActionEvent> {
 
     DecodeHandler(TextField sentenceTextField, ComboBox<String> algorithmBox, Label resultLabel) {
-        setSentenceTextField(sentenceTextField);
-        setAlgorithmBox(algorithmBox);
-        setResultLabel(resultLabel);
+        super(sentenceTextField, algorithmBox, resultLabel);
     }
 
     @Override

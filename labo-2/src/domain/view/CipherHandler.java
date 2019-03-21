@@ -7,8 +7,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import javax.xml.soap.Text;
-
 abstract class CipherHandler {
 
     private TextField sentenceTextField;
@@ -16,11 +14,17 @@ abstract class CipherHandler {
     private CipherContext cipherContext;
     private Label resultLabel;
 
+    CipherHandler(TextField sentenceTextField, ComboBox<String> algorithmBox, Label resultLabel) {
+        setSentenceTextField(sentenceTextField);
+        setAlgorithmBox(algorithmBox);
+        setResultLabel(resultLabel);
+    }
+
     private TextField getSentenceTextField() {
         return this.sentenceTextField;
     }
 
-    void setSentenceTextField(TextField sentenceTextField) {
+    private void setSentenceTextField(TextField sentenceTextField) {
         this.sentenceTextField = sentenceTextField;
     }
 
@@ -28,7 +32,7 @@ abstract class CipherHandler {
         return this.algorithmBox;
     }
 
-    void setAlgorithmBox(ComboBox<String> algorithmBox) {
+    private void setAlgorithmBox(ComboBox<String> algorithmBox) {
         this.algorithmBox = algorithmBox;
     }
 
@@ -36,7 +40,7 @@ abstract class CipherHandler {
         return this.cipherContext;
     }
 
-    void setCipherContext() {
+    private void setCipherContext() {
         this.cipherContext = new CipherContext(getSentenceTextField().getText());
     }
 
@@ -44,7 +48,7 @@ abstract class CipherHandler {
         return this.resultLabel;
     }
 
-    void setResultLabel(Label resultLabel) {
+    private void setResultLabel(Label resultLabel) {
         this.resultLabel = resultLabel;
     }
 
