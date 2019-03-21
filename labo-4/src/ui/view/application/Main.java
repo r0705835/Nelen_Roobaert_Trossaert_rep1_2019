@@ -1,9 +1,9 @@
-package application;
+package ui.view.application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;
-import view.PlayerView;
-import view.ScoreView;
+import ui.view.PlayerView;
+import ui.view.ScoreView;
 
 public class Main extends Application {
 	@Override

@@ -1,4 +1,4 @@
-package view;
+package ui.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,7 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class PlayerView  {
+import java.util.Observable;
+import java.util.Observer;
+
+public class PlayerView implements Observer {
 	private Stage stage = new Stage();
 	private Scene playerScene;
 	private Label diceLabel; 
@@ -44,7 +47,12 @@ public class PlayerView  {
 	public void isAanBeurt(boolean aanBeurt){
 		playButton.setDisable(!aanBeurt);		
 	}
-	
+
+	@Override
+	public void update(Observable o, Object arg) {
+
+	}
+
 	class ThrowDicesHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
