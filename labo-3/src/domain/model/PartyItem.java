@@ -122,4 +122,9 @@ public class PartyItem {
     private void setRemoved(ItemState state) {
         this.removed = state;
     }
+
+    @Override
+    public String toString() {
+        return "Party item: " + this.getName().toUpperCase() + " - Price: €" + this.getValue();
+    }
 }
