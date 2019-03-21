@@ -1,5 +1,6 @@
 package domain.view;
 
+import domain.db.PartyItemDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 public class PartyUI {
 
     void start(Stage primaryStage) {
+        PartyItemDb partyItemDb = new PartyItemDb();
         primaryStage.setTitle("FunForRent");
         GridPane root = new GridPane();
         root.setAlignment(Pos.BASELINE_CENTER);
@@ -58,10 +60,12 @@ public class PartyUI {
         GridPane.setVgrow(choiceTextField, Priority.ALWAYS);
         Button cancelButton = new Button("Cancel");
         cancelButton.setPrefWidth(100);
+        cancelButton.setOnAction(new CancelHandler(choiceTextField, partyItemDb, primaryStage));
         root.add(cancelButton, 0, 11, 1, 1);
         GridPane.setVgrow(cancelButton, Priority.ALWAYS);
         Button confirmButton = new Button("OK");
         confirmButton.setPrefWidth(100);
+        confirmButton.setOnAction(new ConfirmHandler(choiceTextField, partyItemDb, primaryStage));
         root.add(confirmButton, 1, 11, 1, 1);
         GridPane.setVgrow(confirmButton, Priority.ALWAYS);
         Scene mainScene = new Scene(root, 500, 300);
