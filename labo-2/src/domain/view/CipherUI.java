@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 class CipherUI {
 
+    // TODO refactor this!
     void start(Stage primaryStage) {
         primaryStage.setTitle("Decodeer/encodeer");
         GridPane root = new GridPane();
