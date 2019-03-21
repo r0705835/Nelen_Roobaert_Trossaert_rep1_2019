@@ -22,13 +22,11 @@ public class Rented implements ItemState {
     }
 
     @Override
-    public void giveBackNormal() {
-        item.setState(item.getAvailable());
-    }
-
-    @Override
-    public void giveBackDamaged() {
-        item.setState(item.getDamaged());
+    public void giveBack(boolean damaged) {
+        if (damaged)
+            item.setState(item.getDamaged());
+        else
+            item.setState(item.getAvailable());
     }
 
     @Override

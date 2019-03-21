@@ -71,12 +71,8 @@ public class PartyItem {
         state.rent();
     }
 
-    public void giveBackNormal() {
-        state.giveBackNormal();
-    }
-
-    public void giveBackDamaged() {
-        state.giveBackDamaged();
+    public void giveBack(boolean damaged) {
+        state.giveBack(damaged);
     }
 
     public void repair() {

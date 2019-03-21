@@ -3,7 +3,7 @@ package domain.model;
 // Concrete strategy subclass
 public class MirrorCipherStrategy implements CipherStrategy {
 
-    private CipherContext context = null;
+    private CipherContext context;
 
     public MirrorCipherStrategy(CipherContext context) {
         setContext(context);

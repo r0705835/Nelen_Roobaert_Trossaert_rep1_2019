@@ -3,7 +3,7 @@ package domain.model;
 // Concrete strategy subclass
 public class CaesarCipherStrategy implements CipherStrategy {
 
-    private CipherContext context = null;
+    private CipherContext context;
 
     public CaesarCipherStrategy(CipherContext context) {
         setContext(context);
