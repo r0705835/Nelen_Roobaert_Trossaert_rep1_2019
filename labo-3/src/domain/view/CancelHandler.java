@@ -14,6 +14,6 @@ public class CancelHandler extends ButtonHandler implements EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent event) {
-        getPrimaryStage().toBack();
+        getPrimaryStage().setScene(getInitialScene());
     }
 }
