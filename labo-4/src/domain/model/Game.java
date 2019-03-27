@@ -1,14 +1,32 @@
 package domain.model;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Game {
+public class Game extends Observable {
 
-    private ArrayList<Player> players = new ArrayList<>();
+    private List<Player> players = new ArrayList<>();
+    private List<Observer> observers = new ArrayList<>();
 
-    public Game(Player player1, Player player2, Player player3){
-        players.add(player1);
-        players.add(player2);
-        players.add(player3);
+    public Game() {
+
+    }
+
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
+
+    public void removePlayer(Player player) {
+        players.remove(player);
+    }
+
+    public void addObserver(Observer observer) {
+        this.observers.add(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        this.observers.remove(observer);
     }
 }
