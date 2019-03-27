@@ -6,4 +6,5 @@ public interface ItemState {
     void rent();
     void giveBack(boolean damaged);
     void repair();
+
 }

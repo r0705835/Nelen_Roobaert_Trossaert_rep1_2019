@@ -1,11 +1,13 @@
 package domain.db;
 
 import domain.model.PartyItem;
+import domain.model.state.Available;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PartyItemDb {
     private Map<String, PartyItem> items = new HashMap<>();
@@ -32,6 +34,11 @@ public class PartyItemDb {
         return new ArrayList<>(items.values());
     }
 
+    // TODO implement this in the DB class or in the ShowController? or ShowView?
+    public List<PartyItem> getAllAvailable() {
+        return items.values().stream().filter(item -> item.getState() instanceof Available).collect(Collectors.toList());
+    }
+
     public void add(PartyItem item) {
         if (item == null) {
             throw new DbException("No party item given");
@@ -51,7 +58,11 @@ public class PartyItemDb {
             throw new DbException("No name given");
         }
         try {
-            items.remove(name);
+            // TODO does this logic belong in this class?
+            PartyItem item = get(name);
+            item.remove();
+            // items.remove(name);
+
         } catch (Exception e) {
             throw new DbException(e);
         }

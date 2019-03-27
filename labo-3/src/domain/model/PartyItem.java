@@ -16,7 +16,10 @@ public class PartyItem {
     private ItemState rented;
     private ItemState damaged;
     private ItemState removed;
-    private ItemState state = available;
+
+    private ItemState state;
+    // TODO old code
+    // private ItemState state = available;
 
     public PartyItem(String name, double value) {
         setName(name);
@@ -25,6 +28,8 @@ public class PartyItem {
         setRented(new Rented(this));
         setDamaged(new Damaged(this));
         setRemoved(new Removed(this));
+        // TODO to fix npe for this.state
+        setState(getAvailable());
     }
 
     public String getName() {
@@ -121,6 +126,6 @@ public class PartyItem {
 
     @Override
     public String toString() {
-        return "Party item: " + this.getName().toUpperCase() + " - Price: €" + this.getValue();
+        return "Name: " + this.getName() + "\nValue: €" + this.getValue();
     }
 }

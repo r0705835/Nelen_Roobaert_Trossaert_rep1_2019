@@ -30,4 +30,10 @@ public class Available implements ItemState {
     public void repair() {
         throw new IllegalStateException("You can't repair a party item that's currently available to rent");
     }
+
+
+    @Override
+    public String toString() {
+        return "AVAILABLE";
+    }
 }

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import ui.view.MainView;
 
 public class MainController {
+
     private MainView view;
     private PartyItemDb partyItemDb;
     private Stage primaryStage;
@@ -31,11 +32,10 @@ public class MainController {
         primaryStage.setTitle("FunForRent");
         view.setCancelListener(() -> view.clearTextField());
         view.setConfirmListener(text -> {
-            System.out.println("" + text + " was selected");
             handleInput(text);
             view.clearTextField();
         });
-        if(mainScene == null)
+        if (mainScene == null)
             mainScene = new Scene(view.getRootView(), 500, 300);
         primaryStage.setScene(mainScene);
         primaryStage.show();
@@ -59,6 +59,10 @@ public class MainController {
             case 1:
                 AddController addController = new AddController();
                 addController.launch(this);
+                break;
+            case 2:
+                RemoveController removeController = new RemoveController();
+                removeController.launch(this);
                 break;
             case 6:
                 ShowController showController = new ShowController();

@@ -33,4 +33,9 @@ public class Rented implements ItemState {
     public void repair() {
         throw new IllegalStateException("You can't repair a party item that's currently being rented");
     }
+
+    @Override
+    public String toString() {
+        return "RENTED";
+    }
 }

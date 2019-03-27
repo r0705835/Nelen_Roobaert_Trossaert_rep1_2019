@@ -1,6 +1,5 @@
 package ui.view;
 
-import domain.db.PartyItemDb;
 import domain.model.PartyItem;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,9 +12,8 @@ import javafx.scene.layout.Priority;
 import java.util.List;
 
 public class ShowView {
+
     private GridPane root;
-
-
     private ShowView.OnCancelListener cancelListener;
 
     public ShowView() {
@@ -46,7 +44,7 @@ public class ShowView {
             root.add(itemName, 0, i, 1, 1);
             GridPane.setVgrow(itemName, Priority.ALWAYS);
 
-            Label itemValue = new Label("€ " + Double.toString(currentItem.getValue()));
+            Label itemValue = new Label("€ " + currentItem.getValue());
             root.add(itemValue, 1, i, 1, 1);
             GridPane.setVgrow(itemValue, Priority.ALWAYS);
         }
