@@ -8,16 +8,10 @@ import java.util.List;
 public class Game {
     private List<Player> players = new ArrayList<>();
     private PropertyChangeSupport support;
-    private int round;
+    private Player active;
 
     public Game() {
         support = new PropertyChangeSupport(this);
-        int round = 0;
-    }
-
-    public void advanceRound() {
-        support.firePropertyChange("round", this.round, this.round + 1);
-        this.round = round + 1;
     }
 
     public void addPlayer(Player player) {
@@ -34,5 +28,10 @@ public class Game {
 
     public void removePropertyChangeListener(PropertyChangeListener propertyChangeListener) {
         support.removePropertyChangeListener(propertyChangeListener);
+    }
+
+    public void startTurn(Player player) {
+        support.firePropertyChange("ActivePlayer", active, player);
+        active = player;
     }
 }

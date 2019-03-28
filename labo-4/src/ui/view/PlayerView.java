@@ -10,56 +10,53 @@ import javafx.stage.Stage;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyEditor;
-import java.util.Observable;
-import java.util.Observer;
 
 public class PlayerView implements PropertyChangeListener {
-	private Stage stage = new Stage();
-	private Scene playerScene;
-	private Label diceLabel; 
-	private Button playButton; 
-	private Label messageLabel; 
-	
-	private int spelerNummer;
-	
-	public PlayerView(int spelerNummer){
-		this.spelerNummer = spelerNummer;
-		diceLabel = new Label("beurt 1: ");
-		playButton = new Button("Werp dobbelstenen");
-		playButton.setOnAction(new ThrowDicesHandler());
-		playButton.setDisable(true);
-		messageLabel = new Label("Spel nog niet gestart");
-		layoutComponents();
-		stage.setScene(playerScene);
-		stage.setTitle("Speler "+spelerNummer);
-		stage.setResizable(false);		
-		stage.setX(100+(spelerNummer-1) * 350);
-		stage.setY(200);
-		stage.show();
-	}
+    private Stage stage = new Stage();
+    private Scene playerScene;
+    private Label diceLabel;
+    private Button playButton;
+    private Label messageLabel;
 
-	private void layoutComponents() {
-		VBox root = new VBox(10);
-		playerScene = new Scene(root,250,100);
-		root.getChildren().add(playButton);
-		root.getChildren().add(diceLabel);
-		root.getChildren().add(messageLabel);			
-	}
-	
-	public void isAanBeurt(boolean aanBeurt){
-		playButton.setDisable(!aanBeurt);
-	}
+    private int playerId;
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
+    public PlayerView(int playerId) {
+        this.playerId = playerId;
+        diceLabel = new Label("turn 1: ");
+        playButton = new Button("Throw dice");
+        playButton.setOnAction(new ThrowDiceHandler());
+        playButton.setDisable(true);
+        messageLabel = new Label("Game hasn't started yet!");
+        layoutComponents();
+        stage.setScene(playerScene);
+        stage.setTitle("Player " + playerId);
+        stage.setResizable(false);
+        stage.setX(100 + (playerId - 1) * 350);
+        stage.setY(200);
+        stage.show();
+    }
 
-	}
+    private void layoutComponents() {
+        VBox root = new VBox(10);
+        playerScene = new Scene(root, 250, 100);
+        root.getChildren().add(playButton);
+        root.getChildren().add(diceLabel);
+        root.getChildren().add(messageLabel);
+    }
 
-	class ThrowDicesHandler implements EventHandler<ActionEvent> {
+    public void isPlaying(boolean playing) {
+        playButton.setDisable(!playing);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
+    }
+
+    class ThrowDiceHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            
+
         }
     }
 }
