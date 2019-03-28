@@ -10,12 +10,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
 public class AddView {
+
     private GridPane root;
     private TextField name;
     private TextField value;
 
-    private AddView.OnCancelListener cancelListener;
     private AddView.OnConfirmListener confirmListener;
+    private AddView.OnCancelListener cancelListener;
 
     public AddView() {
         this.root = new GridPane();
@@ -73,12 +74,12 @@ public class AddView {
         this.value.setText("");
     }
 
-    public void setCancelListener(AddView.OnCancelListener listener) {
-        this.cancelListener = listener;
-    }
-
     public void setConfirmListener(AddView.OnConfirmListener listener) {
         this.confirmListener = listener;
+    }
+
+    public void setCancelListener(AddView.OnCancelListener listener) {
+        this.cancelListener = listener;
     }
 
     public Parent getRootView() {

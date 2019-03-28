@@ -30,4 +30,10 @@ public class Damaged implements ItemState {
     public void repair() {
         item.setState(item.getAvailable());
     }
+
+
+    @Override
+    public String toString() {
+        return "DAMAGED";
+    }
 }

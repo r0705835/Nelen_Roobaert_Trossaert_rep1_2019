@@ -16,7 +16,8 @@ public class PartyItem {
     private ItemState rented;
     private ItemState damaged;
     private ItemState removed;
-    private ItemState state = available;
+
+    private ItemState state;
 
     public PartyItem(String name, double value) {
         setName(name);
@@ -25,6 +26,7 @@ public class PartyItem {
         setRented(new Rented(this));
         setDamaged(new Damaged(this));
         setRemoved(new Removed(this));
+        setState(getAvailable());
     }
 
     public String getName() {
@@ -121,6 +123,6 @@ public class PartyItem {
 
     @Override
     public String toString() {
-        return "Party item: " + this.getName().toUpperCase() + " - Price: €" + this.getValue();
+        return "Name: " + this.getName() + "\nValue: €" + this.getValue();
     }
 }

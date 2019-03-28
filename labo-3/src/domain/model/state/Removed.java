@@ -30,4 +30,10 @@ public class Removed implements ItemState {
     public void repair() {
         throw new IllegalStateException("You can't do anything with a removed party item");
     }
+
+
+    @Override
+    public String toString() {
+        return "REMOVED";
+    }
 }
