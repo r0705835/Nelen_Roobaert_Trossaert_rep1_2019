@@ -68,6 +68,14 @@ public class MainController {
                 RentController rentController = new RentController();
                 rentController.launch(this);
                 break;
+            case 4:
+                ReturnController returnController = new ReturnController();
+                returnController.launch(this);
+                break;
+            case 5:
+                RepairController repairController = new RepairController();
+                repairController.launch(this);
+                break;
             case 6:
                 ShowController showController = new ShowController();
                 showController.launch(this);
