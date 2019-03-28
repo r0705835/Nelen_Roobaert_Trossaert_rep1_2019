@@ -27,10 +27,9 @@ public class RemoveView {
         this.root.setVgap(5);
         this.root.setHgap(5);
 
-        Label description = new Label("Remove party item");
+        Label description = new Label("Remove party item \n(only for available/damaged items)");
         root.add(description, 0, 0, 1, 1);
         GridPane.setVgrow(description, Priority.ALWAYS);
-
     }
 
     public void setPartyItems(List<PartyItem> partyItems) {

@@ -58,11 +58,7 @@ public class PartyItemDb {
             throw new DbException("No name given");
         }
         try {
-            // TODO does this logic belong in this class?
-            PartyItem item = get(name);
-            item.remove();
-            // items.remove(name);
-
+            items.remove(name);
         } catch (Exception e) {
             throw new DbException(e);
         }

@@ -1,14 +1,11 @@
 package ui.controller;
 
-import domain.db.DbException;
-import domain.db.PartyItemDb;
 import domain.model.PartyItem;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ui.view.RemoveView;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,12 +35,12 @@ class RemoveController {
         try {
             // TODO does this minus one logic belong here?
             PartyItem item = partyItems.get(Integer.parseInt(number) - 1);
-            mainController.getPartyItemDb().remove(item.getName());
+            item.remove();
             mainController.launch(primaryStage);
         } catch (NumberFormatException e) {
             view.clearTextField();
-        } catch (DbException e) {
-            view.setTextField("Can't remove a removed item.");
+        } catch (IllegalStateException e) {
+            view.setTextField("Can't remove a rented or removed item.");
         }
     }
 

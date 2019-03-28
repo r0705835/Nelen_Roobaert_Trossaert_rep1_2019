@@ -64,9 +64,14 @@ public class MainController {
                 RemoveController removeController = new RemoveController();
                 removeController.launch(this);
                 break;
+            case 3:
+                RentController rentController = new RentController();
+                rentController.launch(this);
+                break;
             case 6:
                 ShowController showController = new ShowController();
                 showController.launch(this);
+                break;
             default:
                 // TODO show error message if input is wrong
                 view.clearTextField();
