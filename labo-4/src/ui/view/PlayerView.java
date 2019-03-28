@@ -8,10 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyEditor;
 import java.util.Observable;
 import java.util.Observer;
 
-public class PlayerView implements Observer {
+public class PlayerView implements PropertyChangeListener {
 	private Stage stage = new Stage();
 	private Scene playerScene;
 	private Label diceLabel; 
@@ -45,11 +48,11 @@ public class PlayerView implements Observer {
 	}
 	
 	public void isAanBeurt(boolean aanBeurt){
-		playButton.setDisable(!aanBeurt);		
+		playButton.setDisable(!aanBeurt);
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
+	public void propertyChange(PropertyChangeEvent evt) {
 
 	}
 
