@@ -18,8 +18,6 @@ public class PartyItem {
     private ItemState removed;
 
     private ItemState state;
-    // TODO old code
-    // private ItemState state = available;
 
     public PartyItem(String name, double value) {
         setName(name);
@@ -28,7 +26,6 @@ public class PartyItem {
         setRented(new Rented(this));
         setDamaged(new Damaged(this));
         setRemoved(new Removed(this));
-        // TODO to fix npe for this.state
         setState(getAvailable());
     }
 
