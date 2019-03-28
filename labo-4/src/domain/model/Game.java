@@ -1,5 +1,7 @@
 package domain.model;
 
+import jdk.jshell.spi.ExecutionControl;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -8,7 +10,8 @@ import java.util.List;
 public class Game {
     private List<Player> players = new ArrayList<>();
     private PropertyChangeSupport support;
-    private Player active;
+    private int active;
+    private int turn;
 
     public Game() {
         support = new PropertyChangeSupport(this);
@@ -30,8 +33,12 @@ public class Game {
         support.removePropertyChangeListener(propertyChangeListener);
     }
 
-    public void startTurn(Player player) {
+    public void startTurn(int player) {
         support.firePropertyChange("ActivePlayer", active, player);
         active = player;
+    }
+
+    public void verwerkWorp() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("error");
     }
 }

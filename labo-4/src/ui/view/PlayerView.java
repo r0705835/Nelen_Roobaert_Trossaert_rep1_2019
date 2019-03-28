@@ -8,16 +8,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.util.Observable;
+import java.util.Observer;
 
-public class PlayerView implements PropertyChangeListener {
+public class PlayerView implements Observer {
     private Stage stage = new Stage();
     private Scene playerScene;
     private Label diceLabel;
     private Button playButton;
     private Label messageLabel;
-
     private int playerId;
 
     public PlayerView(int playerId) {
@@ -49,7 +48,7 @@ public class PlayerView implements PropertyChangeListener {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update(Observable o, Object arg) {
 
     }
 

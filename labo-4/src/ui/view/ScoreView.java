@@ -5,10 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ScoreView implements PropertyChangeListener {
+public class ScoreView implements Observer {
     private Stage stage = new Stage();
     private Scene scoreScene;
     private Label scoreLabel;
@@ -37,7 +37,7 @@ public class ScoreView implements PropertyChangeListener {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update(Observable o, Object arg) {
 
     }
 }
