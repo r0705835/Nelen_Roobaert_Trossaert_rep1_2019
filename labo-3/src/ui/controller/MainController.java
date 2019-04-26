@@ -14,9 +14,9 @@ public class MainController {
     private Stage primaryStage;
     private Scene mainScene;
 
-    public MainController(PartyItemDb partyItemDb) {
+    public MainController() {
         this.view = new MainView();
-        this.partyItemDb = partyItemDb;
+        this.partyItemDb = new PartyItemDb();
     }
 
     PartyItemDb getPartyItemDb() {
