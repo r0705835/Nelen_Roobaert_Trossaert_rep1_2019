@@ -14,7 +14,7 @@ public class ScoreView implements Observer {
     private Scene scoreScene;
     private Label scoreLabel;
 
-    private final int MAX_TURNS = 2;
+    private final int MAX_TURNS = 4;
     private final int PLAYER_AMOUNT = 3;
 
     private StringBuilder scoreLine = new StringBuilder();
@@ -67,10 +67,16 @@ public class ScoreView implements Observer {
     private String calculateWinner(String playerScores) {
         String[] lines = playerScores.split("\\r?\\n");
         String finalLine = lines[lines.length - 1];
-        /*scores.
-        scores = Arrays.stream(scores)
-                .map(s -> s.replaceAll("[^\\d.]", ""))
-                .toArray(String[]::new);*/
-        return "\n" + finalLine;
+        String[] scores = Arrays.copyOfRange(finalLine.split(":"), 2, finalLine.split(":").length);
+        int bestPlayer = 1;
+        int bestScore = 0;
+        for (int i = 0; i < scores.length; i++) {
+            String[] score = scores[i].split(" ");
+            if (Integer.parseInt(score[1]) > bestScore) {
+                bestScore = Integer.parseInt(score[1]);
+                bestPlayer = i + 1;
+            }
+        }
+        return "\n" + "The game winner is player " + bestPlayer + " with a score of " + bestScore + ".";
     }
 }
