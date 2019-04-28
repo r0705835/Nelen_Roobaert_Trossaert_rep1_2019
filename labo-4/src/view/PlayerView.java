@@ -17,6 +17,7 @@ public class PlayerView implements Observer {
     private Button playButton;
     private Label messageLabel;
 
+    // TODO can we move vars common between observers to the superclass observer?
     private Game game;
     private final int MAX_TURNS = 4;
     private final int PLAYER_AMOUNT = 3;

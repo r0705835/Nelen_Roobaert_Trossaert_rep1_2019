@@ -64,6 +64,8 @@ public class ScoreView implements Observer {
         }
     }
 
+
+    // TODO should this method/logic be moved to the domain side?
     private String calculateWinner(String playerScores) {
         String[] lines = playerScores.split("\\r?\\n");
         String finalLine = lines[lines.length - 1];
