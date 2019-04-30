@@ -5,8 +5,7 @@ public class MirrorCipherStrategy implements CipherStrategy {
 
     private CipherContext context;
 
-    public MirrorCipherStrategy(CipherContext context) {
-        setContext(context);
+    public MirrorCipherStrategy() {
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ui.view;
 
+import domain.model.CipherContext;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
@@ -18,6 +19,8 @@ import ui.controller.EncodeHandler;
 
 class CipherUI {
 
+    private CipherContext cipherContext;
+
     // TODO refactor this!
     void start(Stage primaryStage) {
         primaryStage.setTitle("Decodeer/encodeer");
@@ -35,14 +38,10 @@ class CipherUI {
         final Label algorithmLabel = new Label("Kies algoritme:");
         root.add(algorithmLabel, 0, 1, 1, 1);
         GridPane.setVgrow(algorithmLabel, Priority.ALWAYS);
-        ObservableList<String> algorithmOptions =
-                FXCollections.observableArrayList(
-                        "Caesarcijfer",
-                        "Spiegeling",
-                        "Capitalisatie",
-                        "Willekeurig"
-                );
+        cipherContext = new CipherContext(sentenceTextField.getText());
+        ObservableList<String> algorithmOptions = FXCollections.observableList(cipherContext.getCipherStrategyList());
         final ComboBox<String> algorithmBox = new ComboBox<>(algorithmOptions);
+        algorithmBox.getSelectionModel().selectFirst();
         root.add(algorithmBox, 1, 1, 1, 1);
         GridPane.setVgrow(algorithmBox, Priority.ALWAYS);
         GridPane.setHalignment(algorithmBox, HPos.RIGHT);

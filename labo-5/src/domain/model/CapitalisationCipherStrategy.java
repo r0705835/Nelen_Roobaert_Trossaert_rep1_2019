@@ -7,8 +7,7 @@ public class CapitalisationCipherStrategy implements CipherStrategy {
 
     private CipherContext context;
 
-    public CapitalisationCipherStrategy(CipherContext context) {
-        setContext(context);
+    public CapitalisationCipherStrategy() {
     }
 
     @Override
@@ -28,7 +27,7 @@ public class CapitalisationCipherStrategy implements CipherStrategy {
         for (int i = 0; i < content.length(); i++) {
             char currentChar = content.charAt(i);
             if (Character.isLetter(currentChar))
-                if(Character.isUpperCase(currentChar))
+                if (Character.isUpperCase(currentChar))
                     builder.append(Character.toLowerCase(currentChar));
                 else
                     builder.append(Character.toUpperCase(currentChar));

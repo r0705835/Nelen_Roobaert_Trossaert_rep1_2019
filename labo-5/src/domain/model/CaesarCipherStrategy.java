@@ -5,8 +5,7 @@ public class CaesarCipherStrategy implements CipherStrategy {
 
     private CipherContext context;
 
-    public CaesarCipherStrategy(CipherContext context) {
-        setContext(context);
+    public CaesarCipherStrategy() {
     }
 
     @Override
@@ -27,7 +26,7 @@ public class CaesarCipherStrategy implements CipherStrategy {
             char currentChar = content.charAt(i);
             if (!Character.isLetter(currentChar) && Character.isSpaceChar(currentChar))
                 builder.append(currentChar);
-            else if (Character.isLetter(currentChar)){
+            else if (Character.isLetter(currentChar)) {
                 char ch = (char) (((int) currentChar + (29) - 97) % 26 + 97);
                 builder.append(ch);
             }
@@ -43,7 +42,7 @@ public class CaesarCipherStrategy implements CipherStrategy {
             char currentChar = content.charAt(i);
             if (!Character.isLetter(currentChar) && Character.isSpaceChar(currentChar))
                 builder.append(currentChar);
-            else if (Character.isLetter(currentChar)){
+            else if (Character.isLetter(currentChar)) {
                 char ch = (char) (((int) currentChar + (-3) - 97) % 26 + 97);
                 builder.append(ch);
             }

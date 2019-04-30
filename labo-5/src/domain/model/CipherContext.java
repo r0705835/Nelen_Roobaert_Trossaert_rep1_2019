@@ -1,5 +1,8 @@
 package domain.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Context class
 public class CipherContext {
 
@@ -34,5 +37,13 @@ public class CipherContext {
     // Concrete method
     public void encode() {
         getCipherStrategy().encode();
+    }
+
+    public List<String> getCipherStrategyList() {
+        List<String> cipherStrategyList = new ArrayList<>();
+        for (CipherStrategyEnum cipherStrategy : CipherStrategyEnum.values())
+            cipherStrategyList.add(cipherStrategy.toString().substring(0, 1)
+                    + cipherStrategy.toString().substring(1).toLowerCase());
+        return cipherStrategyList;
     }
 }

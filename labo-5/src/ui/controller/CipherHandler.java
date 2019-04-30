@@ -52,15 +52,8 @@ abstract class CipherHandler {
 
     void setStrategy() {
         setCipherContext();
-        if (getAlgorithmBox().getValue().equals("Caesarcijfer"))
-            getCipherContext().setCipherStrategy(new CaesarCipherStrategy(getCipherContext()));
-        else if (getAlgorithmBox().getValue().equals("Spiegeling"))
-            getCipherContext().setCipherStrategy(new MirrorCipherStrategy(getCipherContext()));
-        else if (getAlgorithmBox().getValue().equals("Capitalisatie"))
-            getCipherContext().setCipherStrategy(new CapitalisationCipherStrategy(getCipherContext()));
-        else if (getAlgorithmBox().getValue().equals("Willekeurig"))
-            getCipherContext().setCipherStrategy(new RandomCipherStrategy(getCipherContext()));
-        else
-            throw new IllegalStateException("Algoritme " + getAlgorithmBox().getValue() + " niet gevonden in het systeem");
+        CipherStrategy cipherStrategy = CipherStrategyFactory.createCipherStrategy(
+                getAlgorithmBox().getValue(), getCipherContext());
+        getCipherContext().setCipherStrategy(cipherStrategy);
     }
 }

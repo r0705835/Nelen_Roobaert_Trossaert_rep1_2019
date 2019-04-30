@@ -9,8 +9,7 @@ public class RandomCipherStrategy implements CipherStrategy {
     private CipherContext context;
     private RandomCypher randomCypher;
 
-    public RandomCipherStrategy(CipherContext context) {
-        setContext(context);
+    public RandomCipherStrategy() {
         randomCypher = new RandomCypher();
     }
 
