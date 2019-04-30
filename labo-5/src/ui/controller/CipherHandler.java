@@ -3,6 +3,7 @@ package ui.controller;
 import domain.model.CaesarCipherStrategy;
 import domain.model.CipherContext;
 import domain.model.MirrorCipherStrategy;
+import domain.model.CapitalisationCipherStrategy;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -52,12 +53,14 @@ abstract class CipherHandler {
         this.resultLabel = resultLabel;
     }
 
-    void setStrategy(){
+    void setStrategy() {
         setCipherContext();
         if (getAlgorithmBox().getValue().equals("Caesarcijfer"))
             getCipherContext().setCipherStrategy(new CaesarCipherStrategy(getCipherContext()));
-        else if(getAlgorithmBox().getValue().equals("Spiegeling"))
+        else if (getAlgorithmBox().getValue().equals("Spiegeling"))
             getCipherContext().setCipherStrategy(new MirrorCipherStrategy(getCipherContext()));
+        else if (getAlgorithmBox().getValue().equals("Capitalisatie"))
+            getCipherContext().setCipherStrategy(new CapitalisationCipherStrategy(getCipherContext()));
         else
             throw new IllegalStateException("Algoritme " + getAlgorithmBox().getValue() + " niet gevonden in het systeem");
     }
