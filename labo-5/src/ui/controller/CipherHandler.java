@@ -1,9 +1,6 @@
 package ui.controller;
 
-import domain.model.CaesarCipherStrategy;
-import domain.model.CipherContext;
-import domain.model.MirrorCipherStrategy;
-import domain.model.CapitalisationCipherStrategy;
+import domain.model.*;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -61,6 +58,8 @@ abstract class CipherHandler {
             getCipherContext().setCipherStrategy(new MirrorCipherStrategy(getCipherContext()));
         else if (getAlgorithmBox().getValue().equals("Capitalisatie"))
             getCipherContext().setCipherStrategy(new CapitalisationCipherStrategy(getCipherContext()));
+        else if (getAlgorithmBox().getValue().equals("Willekeurig"))
+            getCipherContext().setCipherStrategy(new RandomCipherStrategy(getCipherContext()));
         else
             throw new IllegalStateException("Algoritme " + getAlgorithmBox().getValue() + " niet gevonden in het systeem");
     }

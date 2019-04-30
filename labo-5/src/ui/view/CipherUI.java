@@ -39,7 +39,8 @@ class CipherUI {
                 FXCollections.observableArrayList(
                         "Caesarcijfer",
                         "Spiegeling",
-                        "Capitalisatie"
+                        "Capitalisatie",
+                        "Willekeurig"
                 );
         final ComboBox<String> algorithmBox = new ComboBox<>(algorithmOptions);
         root.add(algorithmBox, 1, 1, 1, 1);
