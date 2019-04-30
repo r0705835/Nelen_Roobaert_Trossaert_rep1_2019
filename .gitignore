@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!labo-5/RandomCipher.jar
 *.war
 *.nar
 *.ear
