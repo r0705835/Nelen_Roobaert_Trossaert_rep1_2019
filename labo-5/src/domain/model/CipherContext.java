@@ -39,7 +39,7 @@ public class CipherContext {
         getCipherStrategy().encode();
     }
 
-    public List<String> getCipherStrategyList() {
+    public static List<String> getCipherStrategyList() {
         List<String> cipherStrategyList = new ArrayList<>();
         for (CipherStrategyEnum cipherStrategy : CipherStrategyEnum.values())
             cipherStrategyList.add(cipherStrategy.toString().substring(0, 1)

@@ -19,8 +19,6 @@ import ui.controller.EncodeHandler;
 
 class CipherUI {
 
-    private CipherContext cipherContext;
-
     // TODO refactor this!
     void start(Stage primaryStage) {
         primaryStage.setTitle("Decodeer/encodeer");
@@ -38,8 +36,7 @@ class CipherUI {
         final Label algorithmLabel = new Label("Kies algoritme:");
         root.add(algorithmLabel, 0, 1, 1, 1);
         GridPane.setVgrow(algorithmLabel, Priority.ALWAYS);
-        cipherContext = new CipherContext(sentenceTextField.getText());
-        ObservableList<String> algorithmOptions = FXCollections.observableList(cipherContext.getCipherStrategyList());
+        ObservableList<String> algorithmOptions = FXCollections.observableList(CipherContext.getCipherStrategyList());
         final ComboBox<String> algorithmBox = new ComboBox<>(algorithmOptions);
         algorithmBox.getSelectionModel().selectFirst();
         root.add(algorithmBox, 1, 1, 1, 1);
