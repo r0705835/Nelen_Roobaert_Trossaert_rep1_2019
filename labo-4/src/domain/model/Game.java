@@ -1,44 +1,19 @@
 package domain.model;
 
-import jdk.jshell.spi.ExecutionControl;
-
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+import javafx.beans.InvalidationListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class Game {
-    private List<Player> players = new ArrayList<>();
-    private PropertyChangeSupport support;
-    private int active;
+public class Game extends Observable {
+    private Player active;
     private int turn;
 
     public Game() {
-        support = new PropertyChangeSupport(this);
     }
 
-    public void addPlayer(Player player) {
-        players.add(player);
-    }
-
-    public void removePlayer(Player player) {
-        players.remove(player);
-    }
-
-    public void addPropertyChangeListener(PropertyChangeListener propertyChangeListener) {
-        support.addPropertyChangeListener(propertyChangeListener);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener propertyChangeListener) {
-        support.removePropertyChangeListener(propertyChangeListener);
-    }
-
-    public void startTurn(int player) {
-        support.firePropertyChange("ActivePlayer", active, player);
-        active = player;
-    }
-
-    public void verwerkWorp() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("error");
+    public void setActivePlayer(Player player){
+        this.active = player;
+        notifyObservers(player);
     }
 }

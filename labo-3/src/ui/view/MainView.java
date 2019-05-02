@@ -13,8 +13,8 @@ public class MainView {
     private GridPane root;
     private TextField input;
 
-    private OnCancelListener cancelListener;
-    private OnConfirmListener confirmListener;
+        private OnCancelListener cancelListener;
+        private OnConfirmListener confirmListener;
 
     public MainView() {
         this.root = new GridPane();

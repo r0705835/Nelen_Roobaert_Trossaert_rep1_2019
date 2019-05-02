@@ -1,99 +1,99 @@
 package ui.view;
 
 import domain.model.*;
-import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import javax.swing.*;
 
 
-public class MainView {
+public class ShopUI {
     Shop shop = new Shop();
+    Scene scene;
+    Stage primaryStage;
 
+    public ShopUI(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        primaryStage.setTitle("Lab 1");
 
-    private OnCancelListener cancelListener;
-    private OnConfirmListener confirmListener;
+        Label menu = new Label("1. Add product\n2. Show product\n3. Show rental price\n4. Show all products\n5. Loan product\n6. Check availability\n\n0. Quit");
+        TextField textField = new TextField();
+        Button button1 = new Button("Submit");
+        button1.setOnAction(e -> getScene(Integer.parseInt(textField.getText())));
+        //Layout1
 
-    public MainView() {
-        this.root = new GridPane();
-        this.root.setAlignment(Pos.BASELINE_CENTER);
-        this.root.setPadding(new Insets(10));
-        this.root.setVgap(5);
-        this.root.setHgap(5);
+        FlowPane root = new FlowPane();
+        root.setAlignment(Pos.BASELINE_CENTER);
+        root.setVgap(5);
+        root.setHgap(5);
+        root.getChildren().addAll(menu, textField, button1);
+        Scene mainScene = new Scene(root, 250, 250);
+        primaryStage.setScene(mainScene);
+        primaryStage.show();
+    }
 
-        Label description = new Label("1. Add party item\n2. Remove party item\n3. Rent party item\n4. Return party item"
-                + "\n5. Repair party item\n6. Show available party items\n\n0. Stop\n\nMake your choice:");
-        root.add(description, 0, 0, 1, 1);
-        GridPane.setVgrow(description, Priority.ALWAYS);
-
-        TextField choiceTextField = new TextField();
-        GridPane.setVgrow(choiceTextField, Priority.ALWAYS);
-        root.add(choiceTextField, 0, 1, 1, 1);
-        this.input = choiceTextField;
-
-        Button cancelButton = new Button("Cancel");
-        cancelButton.setPrefWidth(100);
-        cancelButton.setOnAction(arg -> {
-            if (this.cancelListener != null) {
-                this.cancelListener.onCancel();
-            }
-        });
-        GridPane.setVgrow(cancelButton, Priority.ALWAYS);
-        root.add(cancelButton, 0, 2, 1, 1);
-
-        Button confirmButton = new Button("OK");
-        confirmButton.setPrefWidth(100);
-        confirmButton.setOnAction(arg -> {
-            if (this.confirmListener != null) {
-                this.confirmListener.onConfirm(choiceTextField.getText());
-            }
-        });
-        GridPane.setVgrow(confirmButton, Priority.ALWAYS);
-        root.add(confirmButton, 1, 2, 1, 1);
-        /*int choice = -1;
-        while (choice != 0) {
-            TextField choiceString = JOptionPane.showInputDialog(menu);
-            choice = Integer.parseInt(choiceString);
-            if (choice == 1) {
-                addProduct(shop);
-            } else if (choice == 2) {
+    private void getScene(int number) {
+        switch (number) {
+            case 1:
+                addProductPage(primaryStage, shop);
+                break;
+            case 2:
                 showProduct(shop);
-            } else if (choice == 3) {
+                break;
+            case 3:
                 showPrice(shop);
-            } else if (choice == 4) {
+                break;
+            case 4:
                 showProducts(shop);
-            } else if (choice == 5) {
+                break;
+            case 5:
                 loan(shop);
-            } else if (choice == 6) {
+                break;
+            case 6:
                 showAvailability(shop);
-            }
+                break;
+            default:
+                addProductPage(primaryStage, shop);
         }
     }
 
-    public static void addProduct(Shop shop) {
-        String title = JOptionPane.showInputDialog("Enter the title:");
-        char type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game/ C for CD):").toUpperCase().charAt(0);
+    public void addProductPage(Stage primaryStage, Shop shop) {
+        Label title = new Label("Enter the title:");
+        TextField titleField = new TextField();
+        Label type = new Label("Enter the type (M for movie/G for game/ C for CD):");
+        TextField typeField = new TextField();
+        Button button1 = new Button("Submit");
+        button1.setOnAction(e -> getScene(addProduct(titleField.getText(), typeField.getText().toUpperCase().charAt(0))));
+        FlowPane root = new FlowPane();
+        root.setAlignment(Pos.BASELINE_CENTER);
+        root.setVgap(5);
+        root.setHgap(5);
+        Scene scene = new Scene(root, 200, 200);
+        root.getChildren().addAll(title, titleField, type, typeField);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+    }
+
+    private int addProduct(String title, char type) {
         Product p;
-        if (type == 'M') {
-            p = new Movie(title);
-            shop.addProduct(p);
-        } else if (type == 'G') {
-            p = new Game(title);
-            shop.addProduct(p);
-        } else if (type == 'C') {
-            p = new CD(title);
-            shop.addProduct(p);
-        } else {
-            JOptionPane.showMessageDialog(null, "The given type does not exist!");
+        switch (type) {
+            case 'M':
+                p = new Movie(title);
+                break;
+            case 'G':
+                p = new Game(title);
+                break;
+            default:
+                p = new CD(title);
         }
+        shop.addProduct(p);
+        return 1;
     }
 
     public static void showProduct(Shop shop) {
@@ -150,15 +150,5 @@ public class MainView {
         } catch (Exception E) {
             JOptionPane.showMessageDialog(null, "Requested product not found");
         }
-    }*/
-
-    @FunctionalInterface
-    public interface OnConfirmListener {
-        void onConfirm(String value);
-    }
-
-    @FunctionalInterface
-    public interface OnCancelListener {
-        void onCancel();
     }
 }

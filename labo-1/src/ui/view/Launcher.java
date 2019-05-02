@@ -1,15 +1,20 @@
 package ui.view;
 
 import domain.db.TextDB;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-import java.io.IOException;
+public class Launcher extends Application {
 
-public class Launcher {
-    public static void main(String[] args) throws IOException {
-        ShopUI shopUI = new ShopUI();
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        ShopUI shopUI = new ShopUI(primaryStage);
         TextDB textDB = new TextDB();
         textDB.read(shopUI.shop);
-        shopUI.start();
         textDB.print(shopUI.shop);
     }
 }
