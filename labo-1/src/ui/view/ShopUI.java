@@ -1,18 +1,66 @@
 package ui.view;
 
 import domain.model.*;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 
 
-public class ShopUI {
+public class MainView {
     Shop shop = new Shop();
 
-    public void start() {
-        String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Show all products\n5. Loan product\n6. Check availability\n\n0. Quit";
-        int choice = -1;
+
+    private OnCancelListener cancelListener;
+    private OnConfirmListener confirmListener;
+
+    public MainView() {
+        this.root = new GridPane();
+        this.root.setAlignment(Pos.BASELINE_CENTER);
+        this.root.setPadding(new Insets(10));
+        this.root.setVgap(5);
+        this.root.setHgap(5);
+
+        Label description = new Label("1. Add party item\n2. Remove party item\n3. Rent party item\n4. Return party item"
+                + "\n5. Repair party item\n6. Show available party items\n\n0. Stop\n\nMake your choice:");
+        root.add(description, 0, 0, 1, 1);
+        GridPane.setVgrow(description, Priority.ALWAYS);
+
+        TextField choiceTextField = new TextField();
+        GridPane.setVgrow(choiceTextField, Priority.ALWAYS);
+        root.add(choiceTextField, 0, 1, 1, 1);
+        this.input = choiceTextField;
+
+        Button cancelButton = new Button("Cancel");
+        cancelButton.setPrefWidth(100);
+        cancelButton.setOnAction(arg -> {
+            if (this.cancelListener != null) {
+                this.cancelListener.onCancel();
+            }
+        });
+        GridPane.setVgrow(cancelButton, Priority.ALWAYS);
+        root.add(cancelButton, 0, 2, 1, 1);
+
+        Button confirmButton = new Button("OK");
+        confirmButton.setPrefWidth(100);
+        confirmButton.setOnAction(arg -> {
+            if (this.confirmListener != null) {
+                this.confirmListener.onConfirm(choiceTextField.getText());
+            }
+        });
+        GridPane.setVgrow(confirmButton, Priority.ALWAYS);
+        root.add(confirmButton, 1, 2, 1, 1);
+        /*int choice = -1;
         while (choice != 0) {
-            String choiceString = JOptionPane.showInputDialog(menu);
+            TextField choiceString = JOptionPane.showInputDialog(menu);
             choice = Integer.parseInt(choiceString);
             if (choice == 1) {
                 addProduct(shop);
@@ -102,5 +150,15 @@ public class ShopUI {
         } catch (Exception E) {
             JOptionPane.showMessageDialog(null, "Requested product not found");
         }
+    }*/
+
+    @FunctionalInterface
+    public interface OnConfirmListener {
+        void onConfirm(String value);
+    }
+
+    @FunctionalInterface
+    public interface OnCancelListener {
+        void onCancel();
     }
 }
