@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class TextDB {
 
     public void read(Shop shop) {
-        try (Scanner scanner = new Scanner(new File("c:/temp/shop.txt"))) {
+        try (Scanner scanner = new Scanner(getClass().getResourceAsStream("c:/temp/shop.txt"))) {
             while (scanner.hasNextLine()) {
                 String category = scanner.next();
                 int id = Integer.parseInt(scanner.next());
@@ -24,7 +24,7 @@ public class TextDB {
                 shop.getProducts().add(p);
                 scanner.nextLine();
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }

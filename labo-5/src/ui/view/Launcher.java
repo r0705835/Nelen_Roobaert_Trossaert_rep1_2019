@@ -1,8 +1,7 @@
-package ui.view.launcher;
+package ui.view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import ui.controller.MainController;
 
 public class Launcher extends Application {
 
@@ -12,7 +11,7 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        MainController controller = new MainController();
-        controller.launch(primaryStage);
+        CipherUI cipherUI = new CipherUI();
+        cipherUI.start(primaryStage);
     }
 }
